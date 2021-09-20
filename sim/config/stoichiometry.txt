@@ -1,0 +1,55 @@
+# - - - - - - - - - - - - - - - - - #
+#       REACTION STOICHIOMETRY      #
+# - - - - - - - - - - - - - - - - - #
+#
+# Some reactants and products have flags ('NL', 'C', 'CONST').
+# These flags indicate whether the concentration should not be altered ('C' or 'CONST')
+# or should not affect the reaction rate ('NL', as in non-limiting).
+#
+# You can combine flags together using the '|' symbol.
+# Ex: [1.0]H2O[NL|C] has a stoichiometric coefficient of 1.0 and is non-limiting AND constant.
+#
+# Author: Nathan Malamud
+# References for reaction stoichiometry (feel free to add more):
+#   * Louca et al. (2019)
+#   * Reed et al. (2013)
+#   * Lu et al. (2020)
+#   * Louca & Doebeli. (2017)
+#
+#
+# Note: The order of the reactions listed in stoichiometry.txt
+# does not need to be the same as in reactions.py.
+# BUT you must include the names of each reaction in BOTH files. //
+
+# format - reaction_name : [reagents] -> [products]
+
+cox : [0.167]C6H12O6, O2 -> CO2, H2O[NL|C]
+narG : [0.167]C6H12O6, [2]NO3- -> CO2, [2]NO2-, H2O[NL|C]
+nirK : [0.167]C6H12O6, [1.33]NO2-, [1.33]H+[NL|C] -> CO2, [0.667]N2, [1.67]H2O[NL|C]
+nrf : [0.167]C6H12O6, [0.667]NO2-, [1.33]H+[NL|C] -> CO2, [0.667]NH4+, [0.333]H2O[NL|C]
+dsr : [0.167]C6H12O6, [0.5]SO4-2 -> HCO3-, [0.5]H2S
+nap : [0.25]H2S, NO3- -> NO2-, [0.25]SO4-2, [0.5]H+[NL|C]
+sox : H2S, [2]O2, [2]HCO3- -> [2]CO2, SO4-2, H2O[NL|C]
+asos : H2S, [2]O2 -> SO4-2, [2]H+[NL|C]
+amoA : NH4+, [1.5]O2 -> NO2-, H2O[NL|C], [2]H+[NL|C]
+hzo : NH4+, NO2- -> N2, [2]H2O[NL|C]
+anammox : NH4+, NO2- -> N2, [2]H2O[NL|C]
+nxr : O2, [2]NO2- -> [2]NO3-
+oxH2SrNO3 : [0.25]H2S, NO3- -> [0.25]SO4-2, NO2-, [0.5]H+[NL|C]
+oxH2SrNO2 : [0.375]H2S, NO2-, [0.25]H+[NL|C] -> [0.375]SO4-2, [0.5]N2, [0.5]H2O[NL|C]
+B1 : [2]H2, O2 -> [2]H2O[NL|C]
+I5 : [5]H2, [2]NO3-, [2]H+[NL|C] -> N2, [6]H2O[NL|C]
+B3 : CH4, [2]O2 -> CO2, [2]H2O[NL|C]
+I14 : CH4, [4]NO3- -> [4]NO2-, CO2, [2]H2O[NL|C]
+M6 : CH4, SO4-2, [2]H+[NL|C] -> H2S, CO2, [2]H2O[NL|C]
+B9 : NH4+, [2]O2 -> NO3-, [2]H+[NL|C], H2O[NL|C]
+B14 : [2]H2S, O2 -> [2]S, [2]H2O[NL|C]
+B15 : H2S, [2]O2 -> SO4-2, [2]H+[NL|C]
+B16 : [2]S, [3]O2, [2]H2O[NL|C] -> [2]SO4-2, [4]H+[NL|C]
+I29 : [5]H2S, [2]NO3-, [2]H+[NL|C] -> [5]S, N2, [6]H2O[NL|C]
+D3 : [4]H2, CO2 -> CH4, [2]H2O[NL|C]
+M2 : [4]H2, SO4-2, [2]H+[NL|C] -> H2S, [4]H2O[NL|C]
+C : C6H12O6 -> [3]CH3COOH
+D : C6H12O6, [2]H2O[NL|C] -> [2]CH3COOH, [2]CO2, [4]H2
+K : CH3COOH -> CO2, CH4
+L : H2, [0.25]CO2 -> [0.5]H2O[NL|C], [0.25]CH4
