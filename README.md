@@ -12,6 +12,7 @@ Where `C` is the M-dimensional vector of metabolite concentrations (in μM),  `S
 
 Given a vector of initial metabolite concentrations, the numerical algorithm described in the following pages will integrate Eq. 1 until the system arrives at a dead-end state at which the energetic yield of all N reactions is endergonic (∆G<sub>n</sub> ≥ 0, 1 ≤ n ≤ `N`).
 
+## How to Use:
 ### 1. Executing from the command-line:
 `main.py` is the command-line interface to the entire simulation. This is where the user is able to specify what kind of simulation they would like to run, as well as how many runs of that simulation to run and where to output the data.
 
@@ -49,26 +50,31 @@ All of these arguments have default settings if nothing is passed to them:
 
 ### 2. Modifying the configuration files:
 
-TODO
+In the `sim/config` directory there are 4 files the user can modify:
 
-## Examples of Use:
+#### `general.py`
 
-To further illustrate how this code is meant to be used, here are some concrete examples.
+This file describes general simulation parameters such as `RUNTIME` and `TEMPERATURE`. These parameters are put in `general.py` because they are not metabolite- or reaction-specific.
 
-## 1. 
+#### `metabolites.py` 
 
-TODO
+This file includes all information about metabolites.
+including concentrations and free energies of formation values.
 
-## 2. 
 
-TODO
+#### `reactions.py` 
+Includes all information about reactions, including typical rates and other kinetic parameters. All kinetic parameters are used in the generation of stochastic Ornstein-Uhlenbeck processes in order to model random reaction rates.
+
+#### `stoichiometry.txt`
+
+Describes how each reaction in `reactions.py` alters the concentrations of the metabolites in `metabolites.py`. Since this is a `.txt` file instead of a `.py` file, it needs to be parsed via regular expressions in order to be used in the simulation. This is done using the parsing script in the `sim/parser` directory.
+
+It is important to keep in mind that any changes made to these 4 files will change the behavior of *any* simulation that is executed in the command line via `main.py`.
+
+#
 
 ## References:
 
 1. Louca, Scranton, Taylor., Astor., Crowe, & Doebeli (2019). Circumventing kinetics in biogeochemical modeling. PNAS 116: 11329-11338 
 1. Louca, & Doebeli (2016). Reaction-centric modeling of microbial ecosystems. Ecological Modelling  335: 74-86
-1. 
-1.
-1.
 1. Press, Teukolsky, Vetterling &, Flannery (2007). Integration of Ordinary Differential Equations: Runge-Kutta Method. Numerical Recipes: The Art of Scientific Computing (pp. 907-910). Cambridge University Press
-1. 
