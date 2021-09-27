@@ -70,7 +70,7 @@ def build_network(reaction_argument) -> list:
         for rxn in reaction_list:
             try:
                 assert rxn in reactions
-                index = reactions.find(rxn)
+                index = list(reactions).index(rxn)
                 selection_indices.append(index)
             
             except AssertionError:

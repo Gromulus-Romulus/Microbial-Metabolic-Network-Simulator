@@ -1,0 +1,2 @@
+metabolites (6): ['C6H12O6' 'CO2' 'O2' 'H2O' 'NO2-' 'NO3-']
+reactions (2): ['cox' 'nxr']

@@ -1,4 +1,3 @@
-
 # Main simulation script - acts as a command-line interface to the sim package.
 # See README.md for usage examples.
 #
@@ -107,20 +106,20 @@ with open(f'{args.out}/dead_ends.tsv', 'a+') as dead_end_file:
     # if mode == 'fixed', specify variable to be changed and what interval to change it on.
     VARY_METABOLITE = False 
     if args.mode == 'fixed':
-        answer = input("Would you like to vary the concentration of a certain metabolite? (y or n) : ")
+        answer = input("Would you like to vary the concentration of a certain metabolite? (y or n): ")
         if answer.lower() in ['yes', 'y', 'sure']:
             while True:
-                metabolite_of_interest = input(f"""
-                    Please select from the following list of metabolites:
-
-                    {"n".join(metabolites)}
-
-                    Your choice: """)
+                spacing = "\n"
+                metabolite_of_interest = input(
+                    "\nPlease select from the following list of metabolites:\n\n"
+                    f"{spacing.join(metabolites)}"
+                    "\n\nYour choice: "
+                )
                 
                 try:
                     assert metabolite_of_interest.strip() in metabolites
                 except AssertionError:
-                    print("Invalid choice: {metabolite_of_interest}")
+                    print("Invalid choice.")
                     continue
 
                 break
@@ -138,9 +137,9 @@ with open(f'{args.out}/dead_ends.tsv', 'a+') as dead_end_file:
                     except:
                         raise AssertionError
                 
-                    assert len(input_range) == 2
-                    assert input_range[0] > 0 and input_range[1] > 0
-                    assert input_range[1] > input_range[0]
+                    assert len(integer_tuple) == 2
+                    assert integer_tuple[0] > 0 and integer_tuple[1] > 0
+                    assert integer_tuple[1] > integer_tuple[0]
 
                 except AssertionError:
                     print(f"""Invalid input: {input_range}. The rules: max > min, and must be a tuple of two strictly positive floats.
@@ -164,6 +163,9 @@ with open(f'{args.out}/dead_ends.tsv', 'a+') as dead_end_file:
 
         if VARY_METABOLITE:
             initialC[var_met_index] = var_range[i]
+
+            with open('{args.out}/sim_{i:0>2}/initial_condition.txt') as f:
+                f.write(f'[{metabolite_of_interest}]  # in micro-molars\n{var_range[i]}')
 
         sol, success = sim.execute(initialC, deltaGf0, stoich_mats, ou_parameters, default_timestep=args.timestep, random_seed=args.seed)
 
