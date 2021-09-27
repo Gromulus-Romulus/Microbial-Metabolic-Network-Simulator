@@ -56,21 +56,21 @@ deltaGf0 = np.array([
 # of initalC. Instead, set them to some value close to 0.
 
 initialC = np.array([
-    5.0,     # C6H12O6 TODO
-    5.0,     # CH3COOH TODO
-    5.0,     # CH4     TODO
-    5.0,     # CO      TODO
-    5.0,     # CO2     TODO
-    5.0,     # HCO3-   TODO
+    5.0,      # C6H12O6 
+    5.0,      # CH3COOH
+    5.0,      # CH4
+    5.0,      # CO
+    5.0,      # CO2
+    5.0,      # HCO3-
     20.0,     # O2
     5.5e7,    # H2O
     2.399e-2, # H+
-    5.0,      # H2     TODO
+    5.0,      # H2
     0.100,    # NO2-
     10.00,    # NO3-
     470.0,    # N2
     25.00,    # NH4+
-    5.0,     # S       TODO
+    5.0,      # S
     28000,    # SO4-2
     50.00     # H2S
 ])

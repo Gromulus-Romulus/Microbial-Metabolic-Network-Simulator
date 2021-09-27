@@ -1,6 +1,6 @@
-"""
-File parser for reaction.txt
-"""
+# File parser for reaction.txt
+# Author: Nathan Malamud
+#
 
 from .patterns import *
 

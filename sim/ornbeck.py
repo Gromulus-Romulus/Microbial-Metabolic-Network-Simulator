@@ -1,8 +1,9 @@
 # Code for generating an Ornstein-Uhlenbeck process.
 # This process will be used to model stochastic kinetic rates.
-
+#
 # Adapted from C++ code provided by Dr. Louca.
 # Author: Nathan Malamud
+#
 
 import numpy as np
 from scipy import interpolate
@@ -45,10 +46,12 @@ def knots(times, mu, sigma, decay, start, dt) -> np.array:
 
     return knots
 
-def calibrate(stoich_mat_lim, typical_rates, typical_decay, typical_std, typical_con=1.0) -> list:
+def calibrate(stoich_mat_lim, typical_rates, typical_decay, typical_std, typical_con=1.0, random_seed=None) -> list:
     """
     Calibrates the Ornstein-Uhlenbeck process based on
     simulation parameters from the configuration files.
+
+    The value of random_seed will determine the behavior of the Ornstein-Uhlenbeck processes.
 
     stoich_mat_lim - stoichiometry for limiting substrates (M x N matrix)
     typical_rates - typical range for reaction rates (N x 2 matrix)
@@ -56,6 +59,10 @@ def calibrate(stoich_mat_lim, typical_rates, typical_decay, typical_std, typical
     typical_std - typical range for standard deviation values (N x 2 matrix)
     typical_con - typical metabolite concentration value (set to 1.0 uM by default)
     """
+
+    if not random_seed is None:
+        np.random.seed(random_seed)
+
     M, N = stoich_mat_lim.shape
 
     means = np.zeros(N)

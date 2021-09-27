@@ -1,4 +1,4 @@
-""" Underlying simulation code for batch reactor. """
+# Underlying simulation code.
 
 from . import config, setup
 from .simulation import execute

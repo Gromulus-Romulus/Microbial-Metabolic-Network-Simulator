@@ -1,3 +1,6 @@
+# Code for executing an entire simulation.
+# Author: Nathan Malamud
+#
 
 import numpy as np
 
@@ -44,7 +47,7 @@ def calculate_flux(t, h, C, f) -> tuple:
 
     return C_RK5_flux, error
 
-def execute(initialC, deltaGf0, stoich_mats, ou_parameters, default_timestep=0.01) -> object:
+def execute(initialC, deltaGf0, stoich_mats, ou_parameters, default_timestep=0.01, random_seed=None) -> object:
     """ 
     Executes a simulation to
     to find the Dead-End of a given ODE
@@ -84,7 +87,7 @@ def execute(initialC, deltaGf0, stoich_mats, ou_parameters, default_timestep=0.0
     ornbeck_times = np.linspace(0, (weeks + 1) * 7.0, weeks + 1)
 
     typical_rates, typical_decay, typical_std = ou_parameters
-    [means, sigmas, decays, starts] = ornbeck.calibrate(stoich_mat_lim, typical_rates, typical_decay, typical_std, typical_con=1.0)
+    [means, sigmas, decays, starts] = ornbeck.calibrate(stoich_mat_lim, typical_rates, typical_decay, typical_std, typical_con=1.0, random_seed=random_seed)
     ornbeck_spline = ornbeck.spline(ornbeck_times, means, sigmas, decays, starts)
 
     # Boolean flag: indicates whether a dead-end state has been reached

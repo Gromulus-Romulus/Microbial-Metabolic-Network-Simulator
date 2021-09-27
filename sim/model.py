@@ -1,7 +1,8 @@
 # ODE model of microbial metabolism.
-
+#
 # Source: Project Prompt from Dr. Louca.
 # Author: Nathan Malamud
+#
 
 import numpy as np
 

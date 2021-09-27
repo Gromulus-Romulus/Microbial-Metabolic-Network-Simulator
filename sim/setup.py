@@ -1,8 +1,9 @@
-"""
-Based on info provided in reactions.py, metabolites.py,
-and stoichiometry.txt, setup.py selects K reactions
-and builds the required data structures for a reaction-centric model.
-"""
+# Based on info provided in reactions.py, metabolites.py,
+# and stoichiometry.txt, setup.py selects K reactions
+# and builds the required data structures for a reaction-centric model.
+#
+# Author: Nathan Malamud
+#
 
 import numpy as np
 import numpy.random as np_random
@@ -14,27 +15,17 @@ from . import parser
 from .config.reactions import *     # reactions, typical_rates, typical_decay, typical_std
 from .config.metabolites import *   # metabolites, initialC, deltaGf0
 
-def build_network(K: int) -> list:
+def build_network(reaction_argument) -> list:
     """
     Via a two-phase process, this function uses
     all of the information provided in the config folder
     to return all required parameters for the simulation.
 
-    To whom it may concern:
-
-        You know what would be pretty cool? If we had the option
-        to have K be a list of reactions as opposed to a single integer.
-
-        Just to give this function more flexibility and to give the user
-        more options for simulation configs.
-
-        Alas, I do not possess the time to implement this right now.
-        I leave it up to you! The far more capable coder!
-
-        - Nathan
-
-    Only argument is K - number of reactions needed in the network.
-
+    The behavior of this function varies depending on what
+    datatype reaction_argument is:
+        if in 'random' mode, simulation will assume this is an integer 
+        if in 'fixed' mode, simulation will assume this is a list of reactions
+    
     Order of returns:
         metabolites - names of all species
         reactions - names of all K reactions
@@ -62,9 +53,35 @@ def build_network(K: int) -> list:
 
     # select K random reactions, and extract all parameters needed for them
     selection = np.zeros(shape=N, dtype='bool')
+    selection_indices = None
 
-    # Choose a random assortment of reaction indices (without replacement - no repeats)
-    selection_indices = np_random.choice(np.array([i for i in range(0, N)]), size=K, replace=False)
+    if isinstance(reaction_argument, int):
+        K: int = reaction_argument
+
+        # Choose a random assortment of reaction indices (without replacement - no repeats)
+        selection_indices = np_random.choice(np.array([i for i in range(0, N)]), size=K, replace=False)
+
+    elif isinstance(reaction_argument, list):
+        reaction_list: list = reaction_argument.copy()
+
+        selection_indices = []
+
+        # Choose an assortment of reaction indices based on what reactions are needed in the list
+        for rxn in reaction_list:
+            try:
+                assert rxn in reactions
+                index = reactions.find(rxn)
+                selection_indices.append(index)
+            
+            except AssertionError:
+                print(f'\n{rxn} is NOT a valid reaction name. Please try again.')
+                sys.exit(1)
+        
+        selection_indices = np.array(selection_indices)
+
+    else:
+        print(f'\n{reaction_argument} is not a valid type for argument \'reaction_argument\' in function build_network.')
+        sys.exit(1)
 
     for i in selection_indices:
         selection[i] = True

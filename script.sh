@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Example of how to use this code to generate simulation data.
+# Author: Nathan Malamud
+#
 
 # SCRIPT CONFIG - - - //
 
@@ -14,7 +18,7 @@ OUTPUT_DIR=data
 
 # - - - - - - - - - - //
 
-# WARNING: RUNNING THIS SCRIPT WILL OVERWRITE DATA DIRECTORY
+# WARNING: RUNNING THIS SCRIPT WILL OVERWRITE THE EXISTING DATA DIRECTORY
 rm -rf $OUTPUT_DIR 
 
 COUNTER=0
