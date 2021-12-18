@@ -1,6 +1,5 @@
 # Regex patterns for file parsing.
 # Author: Nathan Malamud
-#
 
 import re
 

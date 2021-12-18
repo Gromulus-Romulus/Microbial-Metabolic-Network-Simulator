@@ -3,7 +3,6 @@
 # and builds the required data structures for a reaction-centric model.
 #
 # Author: Nathan Malamud
-#
 
 import numpy as np
 import numpy.random as np_random
@@ -44,8 +43,11 @@ def build_network(reaction_argument) -> list:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
     # I. NETWORK MODEL SELECTION and TRIMMING:
     #
-    # In order to generate random networks, we need
-    # to be able to access a master library (e.g. in reaction config)
+    # Using a reaction centric approach, we can produce
+    # a 'network' of chemical reactions.
+    #
+    # In order to generate a reaction network, we need
+    # to be able to access a master library (e.g. in config)
     # and filter away what is not needed.
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
     M = len(metabolites)

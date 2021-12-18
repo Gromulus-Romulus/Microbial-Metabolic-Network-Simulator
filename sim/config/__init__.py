@@ -1,3 +1,3 @@
-""" Underlying simulation code for batch reactor. """
+""" Configuration library for sim package. """
 
 from . import reactions, metabolites

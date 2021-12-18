@@ -1,3 +1,4 @@
+# Author: Nathan Malamud
 
 # - - - - - - - - - - - - #
 #    GENERAL PARAMETERS   #

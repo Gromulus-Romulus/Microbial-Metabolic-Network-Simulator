@@ -3,7 +3,6 @@
 #
 # Adapted from C++ code provided by Dr. Louca.
 # Author: Nathan Malamud
-#
 
 import numpy as np
 from scipy import interpolate

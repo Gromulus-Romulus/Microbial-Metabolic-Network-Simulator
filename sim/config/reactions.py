@@ -1,3 +1,7 @@
+# Library of microbially-catalyzed reactions
+# and pertinent kinetic parameters.
+# Author: Nathan Malamud
+
 import numpy as np
 import numpy.random as np_random
 

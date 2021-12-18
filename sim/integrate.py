@@ -1,6 +1,5 @@
-# Code for executing an entire simulation.
+# Numerical integration code.
 # Author: Nathan Malamud
-#
 
 import numpy as np
 

@@ -1,4 +1,4 @@
-# Underlying simulation code.
+""" Numerical simulation package. """
 
 from . import config, setup
-from .simulation import execute
+from .integrate import execute

@@ -1,0 +1,7 @@
+asos oxH2SrNO3 oxH2SrNO2 amoA nxr anammox
+yes
+O2
+(50, 150)
+
+# input file for simulating Cariaco
+# use: python3 main.py < cariaco.txt

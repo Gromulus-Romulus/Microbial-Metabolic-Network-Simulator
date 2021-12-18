@@ -1,6 +1,5 @@
-# File parser for reaction.txt
+# File parser for stoichiometry.txt
 # Author: Nathan Malamud
-#
 
 from .patterns import *
 

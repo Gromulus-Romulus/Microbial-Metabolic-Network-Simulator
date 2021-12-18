@@ -1,3 +1,6 @@
+# Library of metabolites and pertinent experimental data.
+# Author: Nathan Malamud
+
 import numpy as np
 
 metabolites = np.array([
@@ -22,7 +25,7 @@ metabolites = np.array([
 
 # units - kJ / mol
 # source: CHNOSZ package from CRAN library (R programming lang)
-# ask Dr. Louca for the source code for finding these values.
+# ask Dr. Stilianos Louca for the source code for finding these values.
 
 deltaGf0 = np.array([
     -915.288,   # C6H12O6
@@ -45,7 +48,7 @@ deltaGf0 = np.array([
 ])
 
 # units - uM (micro-molar)
-# source: email exchange w/ Dr. Louca
+# source: email exchange w/ Dr. Louca (CARIACO database)
 # it is expected that these concentrations
 # somewhat reflect what is typical
 # in an anoxic ocean basin (e.g. Cariaco, Venezuela; Saanich Inlet, Canada).
